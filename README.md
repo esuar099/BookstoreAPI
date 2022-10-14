@@ -6,7 +6,7 @@ How to run this project
 3. Add in your own database details inside the .env file
 4. Once all is installed run npm run dev to start development server
 
-Installthe following packages
+Install the following packages
 npm install express
 npm install dotenv
 npm install mysql2
