@@ -94,3 +94,14 @@ exports.bookRatingDesc = async (req, res, next) => {
 		next(error);
 	}
 };
+
+exports.bookTopSales = async (req, res, next) => {
+	try {
+		const [books, _] = await Books.bookTopSales();
+
+		res.status(200).json({ count: books.length, books});
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+};

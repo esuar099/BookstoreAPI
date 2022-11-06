@@ -15,6 +15,9 @@ router
     .route("/books/sales")
     .get(postControllers.findAllBooks);
 router
+    .route("/books/sales/top10")
+    .get(postControllers.bookTopSales);
+router
     .route("/books")
     .get(postControllers.findAllBooks);
 router

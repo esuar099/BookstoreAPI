@@ -29,6 +29,11 @@ class Books {
 		let sql = "SELECT * FROM books ORDER BY rating DESC;";
 		return db.execute(sql);
 	}
+	static bookTopSales() {
+        //finds all books and sorts them by ratings desc
+		let sql = "SELECT * FROM books ORDER BY copies_sold DESC LIMIT 10;";
+		return db.execute(sql);
+	}
 	// static booksByGenre() {
     //     let sql = `SELECT * FROM author WHERE author_id = ${id};`;
 	// 	let sql = "SELECT * FROM books ORDER BY rating ASC;";
