@@ -24,7 +24,6 @@ class Author {
 
 	static findAllAuthors() {
 		let sql = "SELECT * FROM author;";
-
 		return db.execute(sql);
 	}
 

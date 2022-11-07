@@ -35,7 +35,8 @@ exports.findAuthorByID = async (req, res, next) => {
 
 		res.status(200).json({author});
 	} catch (error) {
-	
+		console.log(error);
+		next(error);
 	}
 };
 
@@ -49,6 +50,21 @@ exports.findAllBooks = async (req, res, next) => {
 		console.log(error);
 		next(error);
 	}
+};
+
+exports.createNewBook = async (req, res, next) => {
+	try {
+		let {ISBN, title, copies_sold, rating, author_id, genre, description, price, publisher, year_published} = req.body;
+		let books = new Books(ISBN, title, copies_sold, rating, author_id, genre, description, price, publisher, year_published);
+		books = await books.save();
+		console.log(books);
+
+		res.status(201).json({ message: "Book added" });
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+	
 };
 
 exports.bookSalesDesc = async (req, res, next) => {
