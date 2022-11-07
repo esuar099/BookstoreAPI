@@ -7,7 +7,7 @@ router
     .route("/author")
     .get(postControllers.findAllAuthors)
     .post(postControllers.createNewAuthor);
-    
+
 router
     .route("/author/:id")
     .get(postControllers.findAuthorByID);
@@ -19,7 +19,9 @@ router
     .get(postControllers.bookTopSales);
 router
     .route("/books")
-    .get(postControllers.findAllBooks);
+    .get(postControllers.findAllBooks)
+    .post(postControllers.createNewBook);
+    
 router
     .route("/books/sales/desc")
     .get(postControllers.bookSalesDesc);
