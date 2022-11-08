@@ -1,5 +1,5 @@
 const express = require("express");
-const db = require("../config/db");
+const db = require("../../BookstoreProject/config/db");
 
 class User {
   constructor(username, password, full_name, email, home_address) {
