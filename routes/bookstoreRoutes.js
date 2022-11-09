@@ -2,15 +2,16 @@ const express = require('express');
 const postControllers = require('../controllers/postControllers');
 const router = express.Router();
 
-// @route GET && POST - /post/
+// Author routes 
 router
     .route("/author")
     .get(postControllers.findAllAuthors)
     .post(postControllers.createNewAuthor);
-
 router
     .route("/author/:id")
     .get(postControllers.findAuthorByID);
+
+// Books routes
 router
     .route("/books/sales")
     .get(postControllers.findAllBooks);
@@ -21,7 +22,6 @@ router
     .route("/books")
     .get(postControllers.findAllBooks)
     .post(postControllers.createNewBook);
-    
 router
     .route("/books/sales/desc")
     .get(postControllers.bookSalesDesc);
