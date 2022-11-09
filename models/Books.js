@@ -1,10 +1,10 @@
+const express = require("express");
 const db = require('../config/db.js');
 
 class Books {
 
     static findAllBooks() {
         //finds all books and sorts them by sales desc
-
 		let sql = "SELECT * FROM books;";
 		return db.execute(sql);
 	}

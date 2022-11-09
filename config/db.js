@@ -20,4 +20,4 @@ pool.execute(sql, function(err, result){
 })
 */
 
-module.exports = pool.promise;
+module.exports = pool.promise();
