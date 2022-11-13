@@ -12,16 +12,27 @@ router
     .get(postControllers.findAuthorByID);
 
 // Books routes
+// Eduardo
+router
+    .route("/books")
+    .get(postControllers.findAllBooks)
+    .post(postControllers.createNewBook);
+
+router
+    .route("/books/isbn/:id")
+    .get(postControllers.findBookByISBN);
+
+router
+    .route("/books/author/:id")
+    .get(postControllers.findBookByAuthorID);
+
+// Miguel
 router
     .route("/books/sales")
     .get(postControllers.findAllBooks);
 router
     .route("/books/sales/top10")
     .get(postControllers.bookTopSales);
-router
-    .route("/books")
-    .get(postControllers.findAllBooks)
-    .post(postControllers.createNewBook);
 router
     .route("/books/sales/desc")
     .get(postControllers.bookSalesDesc);

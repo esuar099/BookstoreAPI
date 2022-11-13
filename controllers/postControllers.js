@@ -14,8 +14,8 @@ exports.findAllAuthors = async (req, res, next) => {
 
 exports.createNewAuthor = async (req, res, next) => {
 	try {
-		let {first_name, last_name, biography, publisher} = req.body;
-		let author = new Author(first_name, last_name, biography, publisher);
+		let {first_name, last_name, biography, publisher, author_id} = req.body;
+		let author = new Author(first_name, last_name, biography, publisher, author_id);
 		author = await author.save();
 		console.log(author);
 
@@ -52,10 +52,36 @@ exports.findAllBooks = async (req, res, next) => {
 	}
 };
 
+exports.findBookByISBN = async (req, res, next) => {
+	//finds books by ISBN
+	try {
+		let bookID = req.params.id;
+		const [books, _] = await Books.findBookByISBN(bookID);
+
+		res.status(200).json({count: books.length, books});
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+};
+
+exports.findBookByAuthorID = async (req, res, next) => {
+	//finds books by ISBN
+	try {
+		let booksAuthor = req.params.id;
+		const [books, _] = await Books.findBookByAuthorID(booksAuthor);
+
+		res.status(200).json({count: books.length, books});
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+};
+
 exports.createNewBook = async (req, res, next) => {
 	try {
-		let {ISBN, title, copies_sold, rating, author_id, genre, description, price, publisher, year_published} = req.body;
-		let books = new Books(ISBN, title, copies_sold, rating, author_id, genre, description, price, publisher, year_published);
+		let {title, copies_sold, rating, author_id, genre, ISBN, description, price, publisher, year_published} = req.body;
+		let books = new Books(title, copies_sold, rating, author_id, genre, ISBN, description, price, publisher, year_published);
 		books = await books.save();
 		console.log(books);
 
