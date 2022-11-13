@@ -1,25 +1,33 @@
 const db = require('../config/db.js');
 
 class Author {
-	constructor(first_name, last_name, biography, publisher) {
+	constructor(first_name, last_name, biography, publisher, author_id) {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.biography = biography;
 		this.publisher = publisher;
+		this.author_id = author_id;
 	}
 
 	async save() {
-		//this is to get the date but im not using it atm.
-		// let d = new Date();
-		// let yyyy = d.getFullYear();
-		// let mm = d.getMonth() + 1;
-		// let dd = d.getDate();
+		let sql = `
+		INSERT INTO author(
+		first_name, 
+		last_name, 
+		biography, 
+		publisher,
+		author_id
+		) 
+		VALUES(
+		'${this.first_name}', 
+		'${this.last_name}', 
+		'${this.biography}', 
+		'${this.publisher}',
+		'${this.author_id}'
+		)
+		`; 
 
-		// let createdAtDate = '${mm}-${dd}-${yyyy}';
-
-		let sql = `INSERT INTO author(first_name, last_name, biography, publisher) VALUES('${this.first_name}', '${this.last_name}', '${this.biography}', "${this.publisher}")`; 
-		const [newAuthor, _] = await db.execute(sql);
-		return newAuthor;
+		return db.execute(sql);
 	}
 
 	static findAllAuthors() {
