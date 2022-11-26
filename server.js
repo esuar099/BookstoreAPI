@@ -12,6 +12,13 @@ app.use("/Books", require("./routes/bookstoreRoutes"));
 app.use("/CreditCard", require("./routes/userRoutes"));
 app.use("/User", require("./routes/userRoutes"));
 
+/*
+Tatiana
+*/
+app.use("/cart_items", require("./routes/cartItemsRoutes")) //our route to table of cart items 
+app.use("/cart_users", require("./routes/cartUsersRoutes")) //our route to the table of cart users so that we can add a shopping cart instance for a user.
+
+
 // Global Error Handler. IMPORTANT function params MUST start with err
 app.use((err, req, res, next) => {
   console.log(err.stack);
