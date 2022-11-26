@@ -1,5 +1,5 @@
 const express = require("express");
-const db = require("../../BookstoreProject/config/db");
+//const db = require("../../BookstoreProject/config/db");
 
 class CreditCard {
   constructor(company, number, user_id) {

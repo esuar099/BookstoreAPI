@@ -17,7 +17,6 @@ pool.execute(sql, function(err, result){
     result.forEach((res) => {
         console.log(result);
     })
-})
-*/
+})*/
 
 module.exports = pool.promise();
