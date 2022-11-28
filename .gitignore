@@ -23,3 +23,10 @@
 hs_err_pid*
 routes/.env
 .DS_Store
+node_modules/node/.DS_Store
+node_modules/node/node_modules/.DS_Store
+node_modules/node/node_modules/node-bin-darwin-arm64/.DS_Store
+node_modules/node/node_modules/node-bin-darwin-arm64/include/.DS_Store
+node_modules/node/node_modules/node-bin-darwin-arm64/include/node/.DS_Store
+node_modules/node/node_modules/node-bin-darwin-arm64/include/node/openssl/.DS_Store
+node_modules/.DS_Store

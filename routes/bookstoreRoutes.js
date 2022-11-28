@@ -28,23 +28,19 @@ router
 
 // Miguel
 router
-    .route("/books/sales")
+    .route("/books")
     .get(postControllers.findAllBooks);
 router
-    .route("/books/sales/top10")
-    .get(postControllers.bookTopSales);
+    .route("/books/top10")
+    .get(postControllers.booksTopSales);
 router
-    .route("/books/sales/desc")
-    .get(postControllers.bookSalesDesc);
+  .route("/books/oset/")
+  .get(postControllers.booksByOffset);
 router
-    .route("/books/sales/asc")
-   .get(postControllers.bookSalesAsc);
+  .route("/books/rating/")
+  .get(postControllers.booksByRating);
 router
-   .route("/books/ratings/desc")
-   .get(postControllers.bookRatingDesc);
-router
-   .route("/books/ratings/asc")
-  .get(postControllers.bookRatingAsc);
+  .route("/books/genre/")
+  .get(postControllers.booksByGenre);
 
-    
 module.exports = router;
