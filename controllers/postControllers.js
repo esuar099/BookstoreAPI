@@ -40,18 +40,6 @@ exports.findAuthorByID = async (req, res, next) => {
 	}
 };
 
-exports.findAllBooks = async (req, res, next) => {
-	//finds all books
-	try {
-		const [books, _] = await Books.findAllBooks();
-
-		res.status(200).json({ count: books.length, books});
-	} catch (error) {
-		console.log(error);
-		next(error);
-	}
-};
-
 exports.findBookByISBN = async (req, res, next) => {
 	//finds books by ISBN
 	try {
@@ -90,35 +78,13 @@ exports.createNewBook = async (req, res, next) => {
 		console.log(error);
 		next(error);
 	}
-	
 };
 
-exports.bookSalesDesc = async (req, res, next) => {
-	//finds all books and sorts them by sales desc by default
+	// - Miguel
+exports.findAllBooks = async (req, res, next) => {
+	//find all books
 	try {
-		const [books, _] = await Books.bookSalesDesc();
-
-		res.status(200).json({ count: books.length, books});
-	} catch (error) {
-		console.log(error);
-		next(error);
-	}
-};
-exports.bookSalesAsc = async (req, res, next) => {
-	//finds all books and sorts them by sales asc
-	try {
-		const [books, _] = await Books.bookSalesAsc();
-
-		res.status(200).json({ count: books.length, books});
-	} catch (error) {
-		console.log(error);
-		next(error);
-	}
-};
-exports.bookRatingAsc = async (req, res, next) => {
-	try {
-		const [books, _] = await Books.bookRatingAsc();
-
+		const [books, _] = await Books.findAllBooks();
 		res.status(200).json({ count: books.length, books});
 	} catch (error) {
 		console.log(error);
@@ -126,10 +92,10 @@ exports.bookRatingAsc = async (req, res, next) => {
 	}
 };
 
-exports.bookRatingDesc = async (req, res, next) => {
+exports.booksTopSales = async (req, res, next) => {
+	//Top 10 books by sales
 	try {
-		const [books, _] = await Books.bookRatingDesc();
-
+		const [books, _] = await Books.booksTopSales();
 		res.status(200).json({ count: books.length, books});
 	} catch (error) {
 		console.log(error);
@@ -137,10 +103,36 @@ exports.bookRatingDesc = async (req, res, next) => {
 	}
 };
 
-exports.bookTopSales = async (req, res, next) => {
+exports.booksByOffset = async (req, res, next) => {
+	//Display specified number of books from a specified offset
 	try {
-		const [books, _] = await Books.bookTopSales();
+		let oset = req.query.oset;
+		let lim = req.query.lim;
+		let [books, _] = await Books.booksByOffset(oset, lim);
+		res.status(200).json({ count: books.length, books});
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+};
 
+exports.booksByRating = async (req, res, next) => {
+	//Display books of specified rating and higher
+	try {
+		let rate = req.query.rate;
+		let [books, _] = await Books.booksByRating(rate);
+		res.status(200).json({ count: books.length, books});
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+};
+
+exports.booksByGenre = async (req, res, next) => {
+	//Display books of specified genre
+	try {
+		let genre = req.query.genre;
+		let [books, _] = await Books.booksByGenre(genre);
 		res.status(200).json({ count: books.length, books});
 	} catch (error) {
 		console.log(error);
